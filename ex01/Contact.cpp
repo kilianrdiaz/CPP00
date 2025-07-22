@@ -1,22 +1,54 @@
 #include "Contact.hpp"
 
-std::string  Contact::getFirstName() const
+Contact::Contact(void)
 {
-    return firstName;
+    return ;
 }
-std::string  Contact::getLastName() const
+
+Contact::~Contact(void)
 {
-    return lastName;
+    return ;
 }
-std::string  Contact::getPhoneNumber() const
+
+void    Contact::setContact()
 {
-    return phoneNumber;
+    // Error con el std::cin al poner mas de una palabra, cambiar por getline!!!
+    std::cout << "Please enter the first name: ";
+    std::getline(std::cin, this->firstName);
+    std::cout << "Please enter the last name: ";
+    std::getline(std::cin, this->lastName);
+    std::cout << "Please enter the nickname: ";
+    std::getline(std::cin, this->nickname);
+    std::cout << "Please enter the phone number: ";
+    std::getline(std::cin, this->phoneNumber);
+    std::cout << "Please enter the darkest secret: ";
+    std::getline(std::cin, this->darkestSecret);
 }
-std::string  Contact::getEmail() const
+
+void    Contact::getContact(void) const
 {
-    return email;
+    std::cout << "> First Name: " << firstName << std::endl;
+    std::cout << "> Last Name: " << lastName << std::endl;
+    std::cout << "> Nickname: " << nickname << std::endl;
+    std::cout << "> Phone Number: " << phoneNumber << std::endl;
+    std::cout << "> Darkest Secret: " << darkestSecret << std::endl;
 }
-std::string  Contact::getDarkestSecret() const
+
+void    Contact::previewContact(void) const
 {
-    return darkestSecret;
+    if (firstName.length() > 10)
+        std::cout << firstName.substr(0, 9) << ".";
+    else 
+        std::cout << std::setw(10) << firstName;
+    std::cout << "|";
+    if (lastName.length() > 10)
+        std::cout << lastName.substr(0, 9) << ".";
+    else 
+        std::cout << std::setw(10) << lastName;
+    std::cout << "|";
+    if (nickname.length() > 10)
+        std::cout << nickname.substr(0, 9) << ".";
+    else 
+        std::cout << std::setw(10) << nickname;
+    std::cout << "|" << std::endl;
 }

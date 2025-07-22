@@ -1,19 +1,23 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
+
+# include <iostream>
+# include <string>
 # include "Contact.hpp"
 
 class PhoneBook {
-    public:
+    private:
         Contact agenda[8];
         int     contactCount;
         int     oldestIndex;
 
+    public:
         PhoneBook(void);
         ~PhoneBook(void);
 
-        void	setContact();
+        void	setInfo();
         void    showContacts() const;
-		void	getContact() const;
+		void	getInfo() const;
 };
 
-# endif
+#endif

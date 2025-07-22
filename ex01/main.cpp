@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int main(void)
 {
@@ -13,13 +13,13 @@ int main(void)
         std::cin >> command;
         if (command == "ADD")
         {
-            // Code to add a contact
             std::cout << "Adding a contact..." << std::endl;
+            phonebook.setInfo();
         }
         else if (command == "SEARCH")
         {
-            // Code to search for a contact
             std::cout << "Searching for a contact..." << std::endl;
+            phonebook.showContacts();
         }
         else if (command == "EXIT")
         {
@@ -31,6 +31,5 @@ int main(void)
             std::cout << "Invalid command. Please try again." << std::endl;
         }
     }
-
     return 0;
 }

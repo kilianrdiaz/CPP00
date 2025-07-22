@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -11,28 +9,59 @@ PhoneBook::PhoneBook(void)
 
 PhoneBook::~PhoneBook(void) {}
 
-void	PhoneBook::setContact()
+void	PhoneBook::setInfo()
 {
-    std::cout << "Setting a contact..." << std::endl;
-    // This function should prompt the user for contact details and store them in the agenda array
-}
-
-void	PhoneBook::getContact() const
-{
-    std::cout << "Getting a contact..." << std::endl;
-    // This function should display the contacts stored in the agenda array
-}
-
-void    showContacts() const
-{
-    std::cout << "Showing contacts..." << std::endl;
-    for (int i = 0; i < contactCount; ++i)
+    if (contactCount == 8)
     {
-        std::cout << "Contact " << i + 1 << ": " 
-                  << agenda[i].getFirstName() << " "
-                  << agenda[i].getLastName() << " "
-                  << agenda[i].getPhoneNumber() << " "
-                  << agenda[i].getEmail() << " "
-                  << agenda[i].getDarkestSecret() << std::endl;
+        std::cout << "* The agenda is full, the oldest contact will be removed... *" << std::endl;
+        this->agenda[oldestIndex].setContact();
+        if (oldestIndex == 7)
+            oldestIndex = 0;
+        else
+            oldestIndex += 1;
+    }
+    else
+    {
+        this->agenda[contactCount].setContact();
+        contactCount++;
+    }
+}
+
+void    PhoneBook::showContacts() const
+{
+    int index;
+
+    std::cout << "Showing contacts..." << std::endl;
+    if (contactCount > 0)
+    {
+        std::cout << "|-------------------------------------------|" << std::endl;
+        std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+        std::cout << "|----------|----------|----------|----------|" << std::endl;
+        for (int i = 0; i < contactCount; i++)
+        {
+            std::cout << "|";
+            std::cout << std::setw(10) << i + 1;
+            std::cout << "|";
+            this->agenda[i].previewContact();
+        }
+        std::cout << "|-------------------------------------------|" << std::endl;
+    }
+    else
+    {
+        std::cout << "Contact agenda is empty! :(" << std::endl;
+        return ;
+    }
+
+    while (true)
+    {
+        std::cout << "Enter a contact index: ";
+        std::cin >> index;
+        if (index > 0 && index <= contactCount)
+        {
+            std::cout << "Contact #" << index << ": " << std::endl;
+            agenda[index - 1].getContact();
+            break ;
+        }
+        std::cout << "Index is out of range. Try again!" << std::endl;
     }
 }
