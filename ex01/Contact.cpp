@@ -1,26 +1,20 @@
 #include "Contact.hpp"
 
-Contact::Contact(void)
-{
-    return ;
-}
+Contact::Contact(void) {}
 
-Contact::~Contact(void)
-{
-    return ;
-}
+Contact::~Contact(void) {}
 
 void    Contact::setContact()
 {
     // Error con el std::cin al poner mas de una palabra, cambiar por getline!!!
     std::cout << "Please enter the first name: ";
-    std::getline(std::cin, this->firstName);
+    getline(std::cin, this->firstName);
     std::cout << "Please enter the last name: ";
-    std::getline(std::cin, this->lastName);
+    getline(std::cin, this->lastName);
     std::cout << "Please enter the nickname: ";
-    std::getline(std::cin, this->nickname);
+    getline(std::cin, this->nickname);
     std::cout << "Please enter the phone number: ";
-    std::getline(std::cin, this->phoneNumber);
+    getline(std::cin, this->phoneNumber);
     std::cout << "Please enter the darkest secret: ";
     std::getline(std::cin, this->darkestSecret);
 }

@@ -4,7 +4,6 @@ PhoneBook::PhoneBook(void)
 {
     contactCount = 0;
     oldestIndex = 0;
-    std::cout << "PhoneBook created." << std::endl;
 }
 
 PhoneBook::~PhoneBook(void) {}
@@ -31,7 +30,6 @@ void    PhoneBook::showContacts() const
 {
     int index;
 
-    std::cout << "Showing contacts..." << std::endl;
     if (contactCount > 0)
     {
         std::cout << "|-------------------------------------------|" << std::endl;
@@ -56,6 +54,14 @@ void    PhoneBook::showContacts() const
     {
         std::cout << "Enter a contact index: ";
         std::cin >> index;
+        std::cin.ignore();
+        if (std::cin.fail())
+        {
+            std::cin.clear(); // Clear the error flag
+            std::cin.ignore(10000, '\n'); // Discard invalid input
+            std::cout << "Invalid input. Please enter a number." << std::endl;
+            continue;
+        }
         if (index > 0 && index <= contactCount)
         {
             std::cout << "Contact #" << index << ": " << std::endl;
