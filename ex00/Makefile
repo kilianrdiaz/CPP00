@@ -1,9 +1,14 @@
 NAME = megaphone
 
+CXX         = c++
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
+
 SRC = megaphone.cpp
 
-all:
-	c++ -Wall -Wextra -Werror -std=c++98 $(SRC) -o $(NAME)
+all: $(NAME)
+
+$(NAME): Makefile $(SRC)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 	rm -f $(NAME)
