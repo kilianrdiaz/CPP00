@@ -22,11 +22,11 @@ RM          = rm -f
 all: $(NAME)
 
 # Regla para construir el ejecutable
-$(NAME): $(OBJS) Makefile
+$(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 # Compilar .cpp a .o en obj/, y generar archivos .d
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp Makefile | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Crear directorio de objetos si no existe
