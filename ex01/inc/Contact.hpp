@@ -8,11 +8,16 @@
 
 class Contact {
 	private:
-		std::string	_firstName;
-		std::string	_lastName;
-		std::string	_phoneNumber;
-		std::string	_nickname;
-		std::string	_darkestSecret;
+		static std::string	_fields[5];
+		std::string			_informations[11];
+
+		enum Field {
+			FirstName = 0,
+			LastName,
+			NickName,
+			PhoneNumber,
+			DarkestSecret
+		};
 
 	public:
 		Contact(void);
